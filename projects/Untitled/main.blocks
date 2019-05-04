@@ -1,5 +1,46 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
   <variables></variables>
-  <block type="pxt-on-start" x="20" y="20"></block>
-  <block type="device_forever" x="225" y="20"></block>
+  <block type="function_definition" x="0" y="0">
+    <mutation name="handleLike" functionid="fxkZgtW8t4dx82GQ40*f"></mutation>
+    <field name="function_title">функция</field>
+    <field name="function_name">handleLike</field>
+    <statement name="STACK">
+      <block type="device_show_leds">
+        <field name="LEDS">`
+        . . . . . 
+        . # . # . 
+        . . . . . 
+        # . . . # 
+        . # # # .
+        `
+        </field>
+        <next>
+          <block type="device_pause">
+            <value name="pause">
+              <shadow type="timePicker">
+                <field name="ms">1000</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="device_show_leds">
+                <field name="LEDS">`
+        . . . . . 
+        . . . . . 
+        . . . . . 
+        . . . . . 
+        . . . . .
+        `
+                </field>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="pxt-on-start" x="278" y="173">
+    <statement name="HANDLER">
+      <block type="bluetooth_start_button_service"></block>
+    </statement>
+  </block>
 </xml>

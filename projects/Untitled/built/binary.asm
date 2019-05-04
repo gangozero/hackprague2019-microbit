@@ -1,19 +1,19 @@
 ; Interface tables: 0/0 (NaN%)
 ; Virtual methods: 0 / 0
-; generated code sizes (bytes): 4260 (incl. 2322 user, 596 helpers, 14 vtables, 1328 lits); src size 0
-; assembly: 2288 lines; density: 47.39 bytes/stmt; (49 stmts)
-; total bytes: 219300 (90.4% of 237.0k flash with 23388 free)
-; peep hole pass: 23 instructions removed and 100 updated
-; peep hole pass: 2 instructions removed and 0 updated
+; generated code sizes (bytes): 2432 (incl. 1492 user, 738 helpers, 14 vtables, 188 lits); src size 0
+; assembly: 1848 lines; density: 42.63 bytes/stmt; (35 stmts)
+; total bytes: 225664 (93.0% of 237.0k flash with 17024 free)
+; peep hole pass: 38 instructions removed and 25 updated
+; peep hole pass: 4 instructions removed and 0 updated
 ; peep hole pass: 0 instructions removed and 0 updated
 
 
 ; start
-    .startaddr 0x34800
+    .startaddr 0x36800
     .hex 708E3B92C615A841C49866C975EE5197 ; magic number
-    .hex 37D621E55B008D5D ; hex template hash
-    .hex F806164931EEDC19 ; program hash
-    .short 4   ; num. globals
+    .hex C9C3EF050FA261F2 ; hex template hash
+    .hex D0E30DF02DC71DE4 ; program hash
+    .short 9   ; num. globals
     .short 0 ; patched with number of 64 bit words resulting from assembly
     .word _pxt_config_data
     .short 0 ; patched with comm section size
@@ -42,6 +42,10 @@ _main___P1_nochk:
 .locals:
     @stackmark locals
 _main___P1_locals:
+    movs r0, #0
+    ldr r7, [r6, #0]
+    str r0, [r7, #32]
+    @stackempty locals
     movs r0, #1
     ldr r7, [r6, #0]
     str r0, [r7, #4]
@@ -56,11 +60,47 @@ _main___P1_locals:
     @stackempty locals
     ldr r0, _ldlit_2      
     push {r0} ; proc-arg
+    bl addListener__P218
+_proccall9:
+    add sp, #4*1 ; pop locals 1
+    @stackempty locals
+    ldr r0, _ldlit_3      
+    movs r1, #150
+    mov r7, sp
+    str r7, [r6, #4]
+    bl basic::showString
+    @stackempty locals
+    ldr r0, _ldlit_4      
+    push {r0} ; proc-arg
+    bl _conv_1
+    mov r7, sp
+    str r7, [r6, #4]
+    bl bluetooth::onBluetoothConnected
+    add sp, #4*1 ; pop locals 1
+    @stackempty locals
+    ldr r0, _ldlit_5      
+    push {r0} ; proc-arg
     bl _conv_1
     mov r7, sp
     str r7, [r6, #4]
     bl basic::forever
     add sp, #4*1 ; pop locals 1
+    @stackempty locals
+    ldr r0, _ldlit_6      
+    ldr r7, [r6, #0]
+    str r0, [r7, #20]
+    @stackempty locals
+    ldr r0, _ldlit_7      
+    ldr r7, [r6, #0]
+    str r0, [r7, #16]
+    @stackempty locals
+    ldr r0, _ldlit_8      
+    ldr r7, [r6, #0]
+    str r0, [r7, #24]
+    @stackempty locals
+    ldr r0, _ldlit_9      
+    ldr r7, [r6, #0]
+    str r0, [r7, #28]
     @stackempty locals
 .ret.1:
     @stackempty locals
@@ -70,795 +110,468 @@ _main___P1_end:
     @stackempty args
 ; endfun
     ;
-; Function inline main.ts:1
+; Function inline bluetooth/bluetooth.ts:16
     ;
     .section code
     .balign 4
-inline__P439_Lit:
+inline__P383_Lit:
     .word pxt::RefAction_vtable
     .short 0, 0 ; no captured vars
-    .word inline__P439_args@fn
-inline__P439_args:
-    .section code
-inline__P439:
-inline__P439_nochk:
-    @stackmark func
-    @stackmark args
+    .word inline__P383_args@fn
+inline__P383_args:
+    cmp r4, #1
+    bge inline__P383_nochk
     push {lr}
-.locals:
-    @stackmark locals
-inline__P439_locals:
-    movs r0, #4
-    lsls r0, r0, #8
-    adds r0, #177
-    push {r0} ; proc-arg
-    movs r0, #1
-    push {r0} ; proc-arg
-    bl showIcon__P197
-_proccall41:
-    add sp, #4*2 ; pop locals 2
-    @stackempty locals
-.ret.439:
-    @stackempty locals
-inline__P439_end:
+    bl _expand_args_1_2
+    bl inline__P383_nochk
+    @dummystack 1
+    add sp, #4*1
     pop {pc}
-    @stackempty func
-    @stackempty args
-; endfun
-    ;
-; Function showIcon core/icons.ts:186
-    ;
     .section code
-    .balign 4
-    .section code
-showIcon__P197:
-showIcon__P197_nochk:
+inline__P383:
+inline__P383_nochk:
     @stackmark func
     @stackmark args
     push {lr}
 .locals:
-    movs r0, #0
-    push {r0} ;loc
     @stackmark locals
-showIcon__P197_locals:
+inline__P383_locals:
     ldr r0, [sp, args@0]
-    push {r0} ; proc-arg
-    bl iconImage__P200
-_proccall42:
-    add sp, #4*1 ; pop locals 1
-    str r0, [sp, locals@0]
-    @stackempty locals
-    ldr r0, [sp, locals@0]
-    push {r0} ; proc-arg
-    ldr r0, [sp, args@1]
     push {r0} ; proc-arg
     bl _conv_3
-    movs r1, #0
     mov r7, sp
     str r7, [r6, #4]
-    bl ImageMethods::showImage
-    add sp, #4*2 ; pop locals 2
-    @stackempty locals
-.ret.197:
-    @stackempty locals
+    bl bluetooth::__log
     add sp, #4*1 ; pop locals 1
-showIcon__P197_end:
+    @stackempty locals
+.ret.383:
+    @stackempty locals
+inline__P383_end:
     pop {pc}
     @stackempty func
     @stackempty args
 ; endfun
     ;
-; Function iconImage core/icons.ts:282
+; Function inline main.ts:3
     ;
     .section code
     .balign 4
+inline__P391_Lit:
+    .word pxt::RefAction_vtable
+    .short 0, 0 ; no captured vars
+    .word inline__P391_args@fn
+inline__P391_args:
     .section code
-iconImage__P200:
-iconImage__P200_nochk:
+inline__P391:
+inline__P391_nochk:
     @stackmark func
     @stackmark args
     push {lr}
 .locals:
     @stackmark locals
-iconImage__P200_locals:
-    ldr r0, [sp, args@0]
-    push {r0}; tmpstore @1
-    mov r1, r0
+inline__P391_locals:
+    mov r7, sp
+    str r7, [r6, #4]
+    bl bluetooth::startUartService
+    @stackempty locals
+    ldr r0, _ldlit_10      
+    movs r1, #150
+    mov r7, sp
+    str r7, [r6, #4]
+    bl basic::showString
+    @stackempty locals
+.ret.391:
+    @stackempty locals
+inline__P391_end:
+    pop {pc}
+    @stackempty func
+    @stackempty args
+; endfun
+    ;
+; Function inline main.ts:8
+    ;
+    .section code
+    .balign 4
+inline__P392_Lit:
+    .word pxt::RefAction_vtable
+    .short 0, 0 ; no captured vars
+    .word inline__P392_args@fn
+inline__P392_args:
+    .section code
+inline__P392:
+inline__P392_nochk:
+    @stackmark func
+    @stackmark args
+    push {lr}
+.locals:
+    @stackmark locals
+inline__P392_locals:
+    ldr r0, _ldlit_11      
+    push {r0} ; proc-arg
+    bl _conv_4
     movs r0, #1
     mov r7, sp
     str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz43
-    @dummystack 1
+    bl input::onButtonPressed
     add sp, #4*1 ; pop locals 1
-    b .switch_0_4      
-.jmpz43:
-    movs r0, #3
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz44
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_1_4      
-.jmpz44:
-    movs r0, #9
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz45
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_2_4      
-.jmpz45:
-    movs r0, #11
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz46
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_3_4      
-.jmpz46:
-    movs r0, #13
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz47
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_4_4      
-.jmpz47:
-    movs r0, #15
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz48
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_5_4      
-.jmpz48:
-    movs r0, #17
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz49
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_6_4      
-.jmpz49:
-    movs r0, #19
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz50
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_7_4      
-.jmpz50:
-    movs r0, #21
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz51
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_8_4      
-.jmpz51:
-    movs r0, #23
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz52
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_9_4      
-.jmpz52:
-    movs r0, #25
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz53
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_10_4      
-.jmpz53:
-    movs r0, #5
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz54
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_11_4      
-.jmpz54:
-    movs r0, #7
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz55
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_12_4      
-.jmpz55:
-    movs r0, #65
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz56
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_13_4      
-.jmpz56:
-    movs r0, #67
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz57
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_14_4      
-.jmpz57:
-    movs r0, #69
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz58
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_15_4      
-.jmpz58:
-    movs r0, #71
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz59
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_16_4      
-.jmpz59:
-    movs r0, #73
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz60
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_17_4      
-.jmpz60:
-    movs r0, #75
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz61
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_18_4      
-.jmpz61:
-    movs r0, #77
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz62
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_19_4      
-.jmpz62:
-    movs r0, #79
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz63
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_20_4      
-.jmpz63:
-    movs r0, #27
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz64
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_21_4      
-.jmpz64:
-    movs r0, #29
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz65
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_22_4      
-.jmpz65:
-    movs r0, #31
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz66
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_23_4      
-.jmpz66:
-    movs r0, #33
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz67
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_24_4      
-.jmpz67:
-    movs r0, #35
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz68
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_25_4      
-.jmpz68:
-    movs r0, #37
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz69
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_26_4      
-.jmpz69:
-    movs r0, #39
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz70
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_27_4      
-.jmpz70:
-    movs r0, #41
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz71
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_28_4      
-.jmpz71:
-    movs r0, #43
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz72
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_29_4      
-.jmpz72:
-    movs r0, #45
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz73
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_30_4      
-.jmpz73:
-    movs r0, #47
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz74
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_31_4      
-.jmpz74:
-    movs r0, #49
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz75
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_32_4      
-.jmpz75:
-    movs r0, #51
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz76
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_33_4      
-.jmpz76:
-    movs r0, #53
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz77
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_34_4      
-.balign 4
-_ldlit_2:
- .word inline__P439_Lit
-.jmpz77:
-    movs r0, #55
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz78
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_35_4      
-.jmpz78:
-    movs r0, #57
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz79
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_36_4      
-.jmpz79:
-    movs r0, #59
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz80
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_37_4      
-.jmpz80:
-    movs r0, #61
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz81
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_38_4      
-.jmpz81:
-    movs r0, #63
-    ldr r1, [sp, #4*0] ; tmpref @1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl pxt::switch_eq
-    cmp r0, #0
-    beq .jmpz82
-    @dummystack 1
-    add sp, #4*1 ; pop locals 1
-    b .switch_39_4      
-.jmpz82:
-    pop {r0} ; tmpref @1
-    b .switch_40_4      
-.switch_0_4:
-    ldr r0, _ldlit_4      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_1_4:
-    ldr r0, _ldlit_5      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_2_4:
-    ldr r0, _ldlit_6      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_3_4:
-    ldr r0, _ldlit_7      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_4_4:
-    ldr r0, _ldlit_8      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_5_4:
-    ldr r0, _ldlit_9      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_6_4:
-    ldr r0, _ldlit_10      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_7_4:
-    ldr r0, _ldlit_11      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_8_4:
-    ldr r0, _ldlit_12      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_9_4:
-    ldr r0, _ldlit_13      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_10_4:
-    ldr r0, _ldlit_14      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_11_4:
-    ldr r0, _ldlit_15      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_12_4:
-    ldr r0, _ldlit_16      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_13_4:
-    ldr r0, _ldlit_17      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_14_4:
-    ldr r0, _ldlit_18      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_15_4:
-    ldr r0, _ldlit_19      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_16_4:
-    ldr r0, _ldlit_20      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_17_4:
-    ldr r0, _ldlit_21      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_18_4:
-    ldr r0, _ldlit_22      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_19_4:
-    ldr r0, _ldlit_23      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_20_4:
-    ldr r0, _ldlit_24      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_21_4:
-    ldr r0, _ldlit_25      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_22_4:
-    ldr r0, _ldlit_26      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_23_4:
-    ldr r0, _ldlit_27      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_24_4:
-    ldr r0, _ldlit_28      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_25_4:
-    ldr r0, _ldlit_29      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_26_4:
-    ldr r0, _ldlit_30      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_27_4:
-    ldr r0, _ldlit_31      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_28_4:
-    ldr r0, _ldlit_32      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_29_4:
-    ldr r0, _ldlit_33      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_30_4:
-    ldr r0, _ldlit_34      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_31_4:
-    ldr r0, _ldlit_35      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_32_4:
-    ldr r0, _ldlit_36      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_33_4:
-    ldr r0, _ldlit_37      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_34_4:
-    ldr r0, _ldlit_38      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_35_4:
-    ldr r0, _ldlit_39      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_36_4:
-    ldr r0, _ldlit_40      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_37_4:
-    ldr r0, _ldlit_41      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_38_4:
-    ldr r0, _ldlit_42      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_39_4:
-    ldr r0, _ldlit_43      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-    b .ret.200      
-.switch_40_4:
-    ldr r0, _ldlit_44      
-    mov r7, sp
-    str r7, [r6, #4]
-    bl images::createImage
-.brk.445:
-.ret.200:
     @stackempty locals
-; jmp value (already in r0)
-.final_41_4:
-iconImage__P200_end:
+    ldr r0, _ldlit_12      
+    push {r0} ; proc-arg
+    bl _conv_4
+    movs r0, #2
+    mov r7, sp
+    str r7, [r6, #4]
+    bl input::onButtonPressed
+    add sp, #4*1 ; pop locals 1
+    @stackempty locals
+.ret.392:
+    @stackempty locals
+inline__P392_end:
+    pop {pc}
+    @stackempty func
+    @stackempty args
+; endfun
+    ;
+; Function inline main.ts:9
+    ;
+    .section code
+    .balign 4
+inline__P393_Lit:
+    .word pxt::RefAction_vtable
+    .short 0, 0 ; no captured vars
+    .word inline__P393_args@fn
+inline__P393_args:
+    .section code
+inline__P393:
+inline__P393_nochk:
+    @stackmark func
+    @stackmark args
+    push {lr}
+.locals:
+    @stackmark locals
+inline__P393_locals:
+    ldr r7, [r6, #0]
+    ldr r0, [r7, #16]
+    push {r0} ; proc-arg
+    bl _lambda_call0_5
+    add sp, #4*1 ; pop locals 1
+    @stackempty locals
+.ret.393:
+    @stackempty locals
+inline__P393_end:
+    pop {pc}
+    @stackempty func
+    @stackempty args
+; endfun
+    ;
+; Function inline main.ts:13
+    ;
+    .section code
+    .balign 4
+inline__P395_Lit:
+    .word pxt::RefAction_vtable
+    .short 0, 0 ; no captured vars
+    .word inline__P395_args@fn
+inline__P395_args:
+    .section code
+inline__P395:
+inline__P395_nochk:
+    @stackmark func
+    @stackmark args
+    push {lr}
+.locals:
+    @stackmark locals
+inline__P395_locals:
+    ldr r7, [r6, #0]
+    ldr r0, [r7, #20]
+    push {r0} ; proc-arg
+    bl _lambda_call0_5
+    add sp, #4*1 ; pop locals 1
+    @stackempty locals
+.ret.395:
+    @stackempty locals
+inline__P395_end:
+    pop {pc}
+    @stackempty func
+    @stackempty args
+; endfun
+    ;
+; Function inline main.ts:19
+    ;
+    .section code
+    .balign 4
+inline__P397_Lit:
+    .word pxt::RefAction_vtable
+    .short 0, 0 ; no captured vars
+    .word inline__P397_args@fn
+inline__P397_args:
+    .section code
+inline__P397:
+inline__P397_nochk:
+    @stackmark func
+    @stackmark args
+    push {lr}
+.locals:
+    @stackmark locals
+inline__P397_locals:
+    ldr r7, [r6, #0]
+    ldr r0, [r7, #24]
+    push {r0} ; proc-arg
+    ldr r0, _ldlit_13      
+    push {r0} ; proc-arg
+    ldr r0, [sp, #4*1] ; estack
+    bl _lambda_call1_6
+    add sp, #4*2 ; pop locals 2
+    @stackempty locals
+    ldr r7, [r6, #0]
+    ldr r0, [r7, #28]
+    push {r0} ; proc-arg
+    ldr r0, _ldlit_14      
+    push {r0} ; proc-arg
+    ldr r0, [sp, #4*1] ; estack
+    bl _lambda_call1_6
+    add sp, #4*2 ; pop locals 2
+    @stackempty locals
+.ret.397:
+    @stackempty locals
+inline__P397_end:
+    pop {pc}
+    @stackempty func
+    @stackempty args
+; endfun
+    ;
+; Function inline main.ts:24
+    ;
+    .section code
+    .balign 4
+inline__P400_Lit:
+    .word pxt::RefAction_vtable
+    .short 0, 0 ; no captured vars
+    .word inline__P400_args@fn
+inline__P400_args:
+    .section code
+inline__P400:
+inline__P400_nochk:
+    @stackmark func
+    @stackmark args
+    push {lr}
+.locals:
+    @stackmark locals
+inline__P400_locals:
+    ldr r7, [r6, #0]
+    ldr r0, [r7, #24]
+    push {r0} ; proc-arg
+    ldr r0, _ldlit_15      
+    push {r0} ; proc-arg
+    ldr r0, [sp, #4*1] ; estack
+    bl _lambda_call1_6
+    add sp, #4*2 ; pop locals 2
+    @stackempty locals
+    ldr r7, [r6, #0]
+    ldr r0, [r7, #28]
+    push {r0} ; proc-arg
+    ldr r0, _ldlit_16      
+    push {r0} ; proc-arg
+    ldr r0, [sp, #4*1] ; estack
+    bl _lambda_call1_6
+    add sp, #4*2 ; pop locals 2
+    @stackempty locals
+.ret.400:
+    @stackempty locals
+inline__P400_end:
+    pop {pc}
+    @stackempty func
+    @stackempty args
+; endfun
+    ;
+; Function inline main.ts:29
+    ;
+    .section code
+    .balign 4
+inline__P401_Lit:
+    .word pxt::RefAction_vtable
+    .short 0, 0 ; no captured vars
+    .word inline__P401_args@fn
+inline__P401_args:
+    cmp r4, #1
+    bge inline__P401_nochk
+    push {lr}
+    bl _expand_args_1_2
+    bl inline__P401_nochk
+    @dummystack 1
+    add sp, #4*1
+    pop {pc}
+    .section code
+inline__P401:
+inline__P401_nochk:
+    @stackmark func
+    @stackmark args
+    push {lr}
+.locals:
+    @stackmark locals
+inline__P401_locals:
+    ldr r0, [sp, args@0]
+    ldr r1, _ldlit_13      
+    bl _cmp_eqq
+    beq .else_0_9      
+.jmpz16:
+    ldr r0, _ldlit_17      
+    movs r1, #25
+    lsls r1, r1, #4
+    mov r7, sp
+    str r7, [r6, #4]
+    bl basic::showLeds
+    @stackempty locals
+.else_0_9:
+.afterif_1_9:
+    ldr r0, [sp, args@0]
+    ldr r1, _ldlit_15      
+    bl _cmp_eqq
+    beq .else_2_9      
+.jmpz17:
+    ldr r0, _ldlit_18      
+    movs r1, #25
+    lsls r1, r1, #4
+    mov r7, sp
+    str r7, [r6, #4]
+    bl basic::showLeds
+    @stackempty locals
+.else_2_9:
+.afterif_3_9:
+    movs r0, #125
+    lsls r0, r0, #3
+    mov r7, sp
+    str r7, [r6, #4]
+    bl basic::pause
+    @stackempty locals
+    ldr r0, _ldlit_19      
+    movs r1, #25
+    lsls r1, r1, #4
+    mov r7, sp
+    str r7, [r6, #4]
+    bl basic::showLeds
+    @stackempty locals
+.ret.401:
+    @stackempty locals
+inline__P401_end:
+    pop {pc}
+    @stackempty func
+    @stackempty args
+; endfun
+    ;
+; Function inline main.ts:61
+    ;
+    .section code
+    .balign 4
+inline__P403_Lit:
+    .word pxt::RefAction_vtable
+    .short 0, 0 ; no captured vars
+    .word inline__P403_args@fn
+inline__P403_args:
+    cmp r4, #1
+    bge inline__P403_nochk
+    push {lr}
+    bl _expand_args_1_2
+    bl inline__P403_nochk
+    @dummystack 1
+    add sp, #4*1
+    pop {pc}
+    .section code
+inline__P403:
+inline__P403_nochk:
+    @stackmark func
+    @stackmark args
+    push {lr}
+.locals:
+    @stackmark locals
+inline__P403_locals:
+    ldr r0, [sp, args@0]
+    push {r0} ; proc-arg
+    bl _conv_3
+    mov r7, sp
+    str r7, [r6, #4]
+    bl bluetooth::uartWriteString
+    add sp, #4*1 ; pop locals 1
+    @stackempty locals
+.ret.403:
+    @stackempty locals
+inline__P403_end:
+    pop {pc}
+    @stackempty func
+    @stackempty args
+; endfun
+    ;
+; Function addListener core/console.ts:47
+    ;
+    .section code
+    .balign 4
+    .section code
+addListener__P218:
+addListener__P218_nochk:
+    @stackmark func
+    @stackmark args
+    push {lr}
+.locals:
+    @stackmark locals
+addListener__P218_locals:
+    ldr r0, [sp, args@0]
+    mov r7, sp
+    str r7, [r6, #4]
+    bl numops::toBoolDecr
+    mov r7, sp
+    str r7, [r6, #4]
+    bl Boolean_::bang
+    mov r7, sp
+    str r7, [r6, #4]
+    bl pxt::fromBool
+    mov r7, sp
+    str r7, [r6, #4]
+    bl numops::toBoolDecr
+    cmp r0, #0
+    beq .else_0_11      
+.jmpz18:
+    b .ret.218      
+.else_0_11:
+.afterif_1_11:
+    ldr r7, [r6, #0]
+    ldr r0, [r7, #32]
+    mov r7, sp
+    str r7, [r6, #4]
+    bl numops::toBoolDecr
+    mov r7, sp
+    str r7, [r6, #4]
+    bl Boolean_::bang
+    mov r7, sp
+    str r7, [r6, #4]
+    bl pxt::fromBool
+    mov r7, sp
+    str r7, [r6, #4]
+    bl numops::toBoolDecr
+    cmp r0, #0
+    beq .else_2_11      
+.jmpz19:
+    mov r7, sp
+    str r7, [r6, #4]
+    bl Array_::mk
+    ldr r7, [r6, #0]
+    str r0, [r7, #32]
+    @stackempty locals
+.else_2_11:
+.afterif_3_11:
+    ldr r7, [r6, #0]
+    ldr r0, [r7, #32]
+    push {r0} ; proc-arg
+    ldr r0, [sp, args@0]
+    push {r0} ; proc-arg
+    bl _conv_8
+    mov r7, sp
+    str r7, [r6, #4]
+    bl Array_::push
+    add sp, #4*2 ; pop locals 2
+    @stackempty locals
+.ret.218:
+    @stackempty locals
+addListener__P218_end:
     pop {pc}
     @stackempty func
     @stackempty args
@@ -967,6 +680,43 @@ _pxt_buffer_get:
     lsls r0, r0, #1
     adds r0, #1
     pop {pc}
+.balign 4
+_ldlit_2:
+ .word inline__P383_Lit
+_ldlit_3:
+ .word _str0meta
+_ldlit_4:
+ .word inline__P391_Lit
+_ldlit_5:
+ .word inline__P392_Lit
+_ldlit_6:
+ .word inline__P397_Lit
+_ldlit_7:
+ .word inline__P400_Lit
+_ldlit_8:
+ .word inline__P401_Lit
+_ldlit_9:
+ .word inline__P403_Lit
+_ldlit_10:
+ .word _str1meta
+_ldlit_11:
+ .word inline__P393_Lit
+_ldlit_12:
+ .word inline__P395_Lit
+_ldlit_13:
+ .word _str2meta
+_ldlit_14:
+ .word _str3meta
+_ldlit_15:
+ .word _str4meta
+_ldlit_16:
+ .word _str5meta
+_ldlit_17:
+ .word _img6
+_ldlit_18:
+ .word _img7
+_ldlit_19:
+ .word _img8
 .fail:
     bl pxt::failedCast
 .oob:
@@ -1045,89 +795,6 @@ _pxt_buffer_set:
     str r7, [r6, #4]
     bl Array_::setAt
     pop {pc}
-.balign 4
-_ldlit_4:
- .word _img0
-_ldlit_5:
- .word _img1
-_ldlit_6:
- .word _img2
-_ldlit_7:
- .word _img3
-_ldlit_8:
- .word _img4
-_ldlit_9:
- .word _img5
-_ldlit_10:
- .word _img6
-_ldlit_11:
- .word _img7
-_ldlit_12:
- .word _img8
-_ldlit_13:
- .word _img9
-_ldlit_14:
- .word _img10
-_ldlit_15:
- .word _img11
-_ldlit_16:
- .word _img12
-_ldlit_17:
- .word _img13
-_ldlit_18:
- .word _img14
-_ldlit_19:
- .word _img15
-_ldlit_20:
- .word _img16
-_ldlit_21:
- .word _img17
-_ldlit_22:
- .word _img18
-_ldlit_23:
- .word _img19
-_ldlit_24:
- .word _img20
-_ldlit_25:
- .word _img21
-_ldlit_26:
- .word _img22
-_ldlit_27:
- .word _img23
-_ldlit_28:
- .word _img24
-_ldlit_29:
- .word _img25
-_ldlit_30:
- .word _img26
-_ldlit_31:
- .word _img27
-_ldlit_32:
- .word _img28
-_ldlit_33:
- .word _img29
-_ldlit_34:
- .word _img30
-_ldlit_35:
- .word _img31
-_ldlit_36:
- .word _img32
-_ldlit_37:
- .word _img33
-_ldlit_38:
- .word _img34
-_ldlit_39:
- .word _img35
-_ldlit_40:
- .word _img36
-_ldlit_41:
- .word _img37
-_ldlit_42:
- .word _img38
-_ldlit_43:
- .word _img39
-_ldlit_44:
- .word _img40
 .fail:
     bl pxt::failedCast
     .section code
@@ -1341,7 +1008,32 @@ _conv_1:
     pop {pc}
     @stackempty args
     .section code
-_inst_builtin9_validate_2:
+_expand_args_1_2:
+    movs r0, #0
+    movs r1, #0
+    push {r0}
+    bx lr
+    .section code
+_conv_3:
+    @stackmark args
+    push {lr}
+    ldr r0, [sp, #4*1] ; estack
+    bl _pxt_stringConv
+    str r0, [sp, #4*1] ; estack
+    pop {pc}
+    @stackempty args
+    .section code
+_conv_4:
+    @stackmark args
+    push {lr}
+    ldr r0, [sp, #4*1] ; estack
+    bl _inst_builtin4_validate_0
+    mov r1, r0      
+    pop {pc}
+    @stackempty args
+    .section code
+_lambda_call0_5:
+; lambda call
     lsls r2, r0, #30
     bne .fail
     cmp r0, #0
@@ -1349,7 +1041,92 @@ _inst_builtin9_validate_2:
     ldr r3, [r0, #0]
 ; vtable in R3
     ldrh r2, [r3, #8]
-    cmp r2, #9
+    cmp r2, #4
+    bne .fail
+    movs r4, #0
+    ldrh r1, [r0, #4]
+    cmp r1, #0
+    bne .pushR5
+    ldr r1, [r0, #8]
+    bx r1 ; keep lr from the caller
+.pushR5:
+    sub sp, #8
+    str r5, [sp, #4*0]
+    mov r1, lr
+    str r1, [sp, #4*1]
+    mov r5, r0
+    ldr r7, [r5, #8]
+    ;ldr r0, [sp, #4*0]
+    ;bl _pxt_incr
+    blx r7
+    ;mov r7, r0
+    ldr r4, [sp, #4*1]
+    ldr r5, [sp, #4*0]
+    ;mov r0, r5
+    ;bl _pxt_decr
+    add sp, #8
+    ;mov r0, r7
+    bx r4
+; end lambda call
+.fail:
+    mov r7, sp
+    str r7, [r6, #4]
+    bl pxt::failedCast
+    .section code
+_lambda_call1_6:
+; lambda call
+    lsls r2, r0, #30
+    bne .fail
+    cmp r0, #0
+    beq .fail
+    ldr r3, [r0, #0]
+; vtable in R3
+    ldrh r2, [r3, #8]
+    cmp r2, #4
+    bne .fail
+    movs r4, #1
+    ldrh r1, [r0, #4]
+    cmp r1, #0
+    bne .pushR5
+    ldr r1, [r0, #8]
+    bx r1 ; keep lr from the caller
+.pushR5:
+    sub sp, #8
+    ldr r1, [sp, #4*2]
+    str r1, [sp, #4*0]
+    str r5, [sp, #4*1]
+    mov r1, lr
+    str r1, [sp, #4*2]
+    mov r5, r0
+    ldr r7, [r5, #8]
+    ;ldr r0, [sp, #4*1]
+    ;bl _pxt_incr
+    blx r7
+    ;mov r7, r0
+    ldr r4, [sp, #4*2]
+    ldr r5, [sp, #4*1]
+    ;mov r0, r5
+    ;bl _pxt_decr
+    ldr r1, [sp, #4*0]
+    str r1, [sp, #4*2]
+    add sp, #8
+    ;mov r0, r7
+    bx r4
+; end lambda call
+.fail:
+    mov r7, sp
+    str r7, [r6, #4]
+    bl pxt::failedCast
+    .section code
+_inst_builtin6_validate_7:
+    lsls r2, r0, #30
+    bne .fail
+    cmp r0, #0
+    beq .fail
+    ldr r3, [r0, #0]
+; vtable in R3
+    ldrh r2, [r3, #8]
+    cmp r2, #6
     bne .fail
     bx lr
 .fail:
@@ -1357,20 +1134,13 @@ _inst_builtin9_validate_2:
     str r7, [r6, #4]
     bl pxt::failedCast
     .section code
-_conv_3:
+_conv_8:
     @stackmark args
     push {lr}
     ldr r0, [sp, #4*2] ; estack
-    bl _inst_builtin9_validate_2
-    push {r0}
-    ldr r0, [sp, #4*2] ; estack
-    asrs r0, r0, #1
-    bcs .isint2
-    lsls r0, r0, #1
-    bl _numops_toInt
-.isint2:
-    mov r2, r0      
-    pop {r0, pc}      
+    bl _inst_builtin6_validate_7
+    ldr r1, [sp, #4*1] ; estack
+    pop {pc}
     @stackempty args
 _numops_adds:
     @scope _numops_adds
@@ -1667,223 +1437,69 @@ _helpers_end:
 .balign 4
 _pxt_iface_member_names:
     .word 1
-    .word _str83meta  ; 0 .
+    .word _str20meta  ; 0 .
     .word 0
 _vtables_end:
 .balign 4
 _pxt_config_data:
     .word 0
 .balign 4
-_img0:
- .short 0xffff
-        .short 5, 5
-        .byte 0,255,0,255,0,255,255,255,255,255,255,255,255,255,255,0,255,255,255,0,0,0,255,0,0,0
-.balign 4
-_img1:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,0,0,0,0,255,0,255,0,0,255,255,255,0,0,0,255,0,0,0,0,0,0,0,0
-.balign 4
-_img2:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,0,0,0,0,255,0,255,0,0,0,0,0,0,255,0,0,0,255,0,255,255,255,0,0
-.balign 4
-_img3:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,0,0,0,0,255,0,255,0,0,0,0,0,0,0,255,255,255,0,255,0,0,0,255,0
-.balign 4
-_img4:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,0,0,0,0,255,0,255,0,0,0,0,0,0,0,255,0,255,0,255,0,255,0,255,0
-.balign 4
-_img5:
- .short 0xffff
-        .short 5, 5
-        .byte 255,0,0,0,255,0,255,0,255,0,0,0,0,0,0,255,255,255,255,255,255,0,255,0,255,0
-.balign 4
 _img6:
  .short 0xffff
         .short 5, 5
-        .byte 0,0,0,0,0,255,255,0,255,255,0,0,0,0,0,0,255,255,255,0,0,0,0,0,0,0
+        .byte 0,255,0,255,0,0,255,0,255,0,0,0,0,0,0,255,0,0,0,255,0,255,255,255,0,0
 .balign 4
 _img7:
  .short 0xffff
         .short 5, 5
-        .byte 0,255,0,255,0,0,0,0,0,0,0,0,255,0,0,0,255,0,255,0,0,0,255,0,0,0
+        .byte 0,255,0,255,0,0,255,0,255,0,0,0,0,0,0,0,255,255,255,0,255,0,0,0,255,0
 .balign 4
 _img8:
  .short 0xffff
         .short 5, 5
-        .byte 255,0,0,0,255,0,0,0,0,0,255,255,255,255,255,0,0,0,255,255,0,0,0,255,255,0
-.balign 4
-_img9:
- .short 0xffff
-        .short 5, 5
-        .byte 255,255,255,255,255,255,255,0,255,255,0,0,0,0,0,0,255,0,255,0,0,255,255,255,0,0
-.balign 4
-_img10:
- .short 0xffff
-        .short 5, 5
-        .byte 255,255,0,255,255,0,0,0,0,0,0,0,0,255,0,0,0,255,0,0,0,255,0,0,0,0
-.balign 4
-_img11:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,0,0,0,0,0,0,0,255,0,0,0,255,0,255,0,255,0,0,0,255,0,0,0,0
-.balign 4
-_img12:
- .short 0xffff
-        .short 5, 5
-        .byte 255,0,0,0,255,0,255,0,255,0,0,0,255,0,0,0,255,0,255,0,255,0,0,0,255,0
-.balign 4
-_img13:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,0,0,0,0,0,255,0,0,0,255,0,255,0,255,255,255,255,255,0,0,0,0,0,0
-.balign 4
-_img14:
- .short 0xffff
-        .short 5, 5
-        .byte 255,0,0,0,0,255,255,0,0,0,255,0,255,0,0,255,0,0,255,0,255,255,255,255,255,0
-.balign 4
-_img15:
- .short 0xffff
-        .short 5, 5
-        .byte 0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,0
-.balign 4
-_img16:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,255,0,0,0,255,0,255,0,255,0,0,0,255,0,255,0,255,0,0,0,255,0,0,0
-.balign 4
-_img17:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,0,0,0,0,0,255,0,0,0,255,0,255,0,0,0,255,0,0,0,0,0,0,0,0
-.balign 4
-_img18:
- .short 0xffff
-        .short 5, 5
-        .byte 255,255,255,255,255,255,0,0,0,255,255,0,0,0,255,255,0,0,0,255,255,255,255,255,255,0
-.balign 4
-_img19:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,0,0,0,0,255,255,255,0,0,255,0,255,0,0,255,255,255,0,0,0,0,0,0,0
-.balign 4
-_img20:
- .short 0xffff
-        .short 5, 5
-        .byte 255,255,0,0,255,255,255,0,255,0,0,0,255,0,0,255,255,0,255,0,255,255,0,0,255,0
-.balign 4
-_img21:
- .short 0xffff
-        .short 5, 5
-        .byte 255,255,0,255,255,255,255,255,255,255,0,255,255,255,0,0,255,255,255,0,0,255,255,255,0,0
-.balign 4
-_img22:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,0,255,255,0,0,0,255,255,255,255,255,255,255,255,255,255,255,255,0,255,0,255,0,0
-.balign 4
-_img23:
- .short 0xffff
-        .short 5, 5
-        .byte 0,255,255,0,0,255,255,255,0,0,0,255,255,255,255,0,255,255,255,0,0,0,0,0,0,0
-.balign 4
-_img24:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,255,0,0,0,255,255,255,0,255,255,255,255,255,0,255,255,255,0,0,255,0,255,0,0
-.balign 4
-_img25:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,0,0,0,0,255,255,255,0,255,255,255,255,255,0,255,0,255,0,0,0,0,0,0,0
-.balign 4
-_img26:
- .short 0xffff
-        .short 5, 5
-        .byte 255,255,0,255,255,255,255,255,255,255,0,0,255,0,0,255,255,255,255,255,255,255,0,255,255,0
-.balign 4
-_img27:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,255,0,0,255,255,255,255,255,0,0,255,0,0,0,255,0,255,0,255,0,0,0,255,0
-.balign 4
-_img28:
- .short 0xffff
-        .short 5, 5
-        .byte 0,255,255,255,0,255,0,255,0,255,255,255,255,255,255,255,255,255,255,255,255,0,255,0,255,0
-.balign 4
-_img29:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,255,0,0,0,0,255,0,0,0,0,255,0,0,0,255,255,255,0,0,0,255,0,0,0
-.balign 4
-_img30:
- .short 0xffff
-        .short 5, 5
-        .byte 255,255,0,0,0,0,255,0,0,0,0,255,0,0,0,0,255,255,255,0,0,255,0,255,0,0
-.balign 4
-_img31:
- .short 0xffff
-        .short 5, 5
-        .byte 0,255,255,255,0,255,0,255,0,255,255,255,255,255,255,0,255,255,255,0,0,255,255,255,0,0
-.balign 4
-_img32:
- .short 0xffff
-        .short 5, 5
-        .byte 0,255,255,255,0,255,255,255,255,255,0,0,255,0,0,255,0,255,0,0,255,255,255,0,0,0
-.balign 4
-_img33:
- .short 0xffff
-        .short 5, 5
-        .byte 255,255,0,0,0,255,255,0,255,255,0,255,0,255,0,0,255,255,255,0,0,0,0,0,0,0
-.balign 4
-_img34:
- .short 0xffff
-        .short 5, 5
-        .byte 255,0,255,0,0,255,0,255,0,0,255,255,255,255,0,255,255,0,255,0,255,255,255,255,0,0
-.balign 4
-_img35:
- .short 0xffff
-        .short 5, 5
-        .byte 255,0,0,0,255,255,0,0,0,255,255,255,255,255,255,0,255,255,255,0,0,0,255,0,0,0
-.balign 4
-_img36:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,255,0,0,0,0,255,0,0,0,0,255,0,0,255,255,255,0,0,255,255,255,0,0,0
-.balign 4
-_img37:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,255,0,0,0,0,255,255,0,0,0,255,0,255,255,255,255,0,0,255,255,255,0,0,0
-.balign 4
-_img38:
- .short 0xffff
-        .short 5, 5
-        .byte 255,0,255,0,255,255,0,255,0,255,255,255,255,255,255,0,0,255,0,0,0,0,255,0,0,0
-.balign 4
-_img39:
- .short 0xffff
-        .short 5, 5
-        .byte 0,0,255,0,0,0,255,255,255,0,255,255,0,255,255,0,255,255,255,0,0,0,255,0,0,0
-.balign 4
-_img40:
- .short 0xffff
-        .short 5, 5
         .byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 .balign 4
-_str83meta:
+_str20meta:
  .word pxt::string_inline_ascii_vt
         .short 0
-_str83:
+_str20:
  .string ""
+.balign 4
+_str0meta:
+ .word pxt::string_inline_ascii_vt
+        .short 5
+_str0:
+ .string "READY"
+.balign 4
+_str1meta:
+ .word pxt::string_inline_ascii_vt
+        .short 1
+_str1:
+ .string "C"
+.balign 4
+_str2meta:
+ .word pxt::string_inline_ascii_vt
+        .short 4
+_str2:
+ .string "like"
+.balign 4
+_str3meta:
+ .word pxt::string_inline_ascii_vt
+        .short 5
+_str3:
+ .string "like;"
+.balign 4
+_str4meta:
+ .word pxt::string_inline_ascii_vt
+        .short 6
+_str4:
+ .string "unlike"
+.balign 4
+_str5meta:
+ .word pxt::string_inline_ascii_vt
+        .short 7
+_str5:
+ .string "unlike;"
 .balign 4
 .section code
 _pxt_perf_counters:

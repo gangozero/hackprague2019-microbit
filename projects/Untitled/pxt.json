@@ -2,7 +2,7 @@
     "name": "Gangozero",
     "dependencies": {
         "core": "*",
-        "radio": "*"
+        "bluetooth": "*"
     },
     "description": "",
     "files": [
