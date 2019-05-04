@@ -17,13 +17,13 @@ basic.forever(()=>{
 })
 
 let handleLike = ()=>{
-    showIcon('like');
     sendCommand('like;');
+    showIcon('like');
 }
 
 let handleUnlike = ()=>{
-    showIcon('unlike');
     sendCommand('unlike;');
+    showIcon('unlike');  
 }
 
 let showIcon = (icon:string) => {

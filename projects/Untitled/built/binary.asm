@@ -12,7 +12,7 @@
     .startaddr 0x36800
     .hex 708E3B92C615A841C49866C975EE5197 ; magic number
     .hex C9C3EF050FA261F2 ; hex template hash
-    .hex D0E30DF02DC71DE4 ; program hash
+    .hex 06AEEDC113DBAD4D ; program hash
     .short 9   ; num. globals
     .short 0 ; patched with number of 64 bit words resulting from assembly
     .word _pxt_config_data
@@ -96,11 +96,11 @@ _proccall9:
     @stackempty locals
     ldr r0, _ldlit_8      
     ldr r7, [r6, #0]
-    str r0, [r7, #24]
+    str r0, [r7, #28]
     @stackempty locals
     ldr r0, _ldlit_9      
     ldr r7, [r6, #0]
-    str r0, [r7, #28]
+    str r0, [r7, #24]
     @stackempty locals
 .ret.1:
     @stackempty locals
@@ -411,7 +411,7 @@ inline__P401_nochk:
     @stackmark locals
 inline__P401_locals:
     ldr r0, [sp, args@0]
-    ldr r1, _ldlit_13      
+    ldr r1, _ldlit_14      
     bl _cmp_eqq
     beq .else_0_9      
 .jmpz16:
@@ -425,7 +425,7 @@ inline__P401_locals:
 .else_0_9:
 .afterif_1_9:
     ldr r0, [sp, args@0]
-    ldr r1, _ldlit_15      
+    ldr r1, _ldlit_16      
     bl _cmp_eqq
     beq .else_2_9      
 .jmpz17:
@@ -1479,27 +1479,27 @@ _str1:
 .balign 4
 _str2meta:
  .word pxt::string_inline_ascii_vt
-        .short 4
+        .short 5
 _str2:
- .string "like"
+ .string "like;"
 .balign 4
 _str3meta:
  .word pxt::string_inline_ascii_vt
-        .short 5
+        .short 4
 _str3:
- .string "like;"
+ .string "like"
 .balign 4
 _str4meta:
  .word pxt::string_inline_ascii_vt
-        .short 6
+        .short 7
 _str4:
- .string "unlike"
+ .string "unlike;"
 .balign 4
 _str5meta:
  .word pxt::string_inline_ascii_vt
-        .short 7
+        .short 6
 _str5:
- .string "unlike;"
+ .string "unlike"
 .balign 4
 .section code
 _pxt_perf_counters:
