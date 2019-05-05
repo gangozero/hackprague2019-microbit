@@ -1,11 +1,12 @@
-basic.showString("READY");
+basic.showString("R");
+basic.pause(1000);
+//bluetooth.startUartService();
+bluetooth.startButtonService();
 
-bluetooth.onBluetoothConnected(()=>{
-   bluetooth.startUartService();
-   basic.showString("C"); 
-});
 
 basic.forever(()=>{
+    bluetooth.advertiseUrl('huesos',7,true);
+
     input.onButtonPressed(Button.A, () => {
         handleUnlike();      
     });
@@ -17,12 +18,12 @@ basic.forever(()=>{
 })
 
 let handleLike = ()=>{
-    sendCommand('like;');
+   // bluetooth.uartWriteNumber(10);
     showIcon('like');
 }
 
 let handleUnlike = ()=>{
-    sendCommand('unlike;');
+  //  bluetooth.uartWriteNumber(20);
     showIcon('unlike');  
 }
 
@@ -55,9 +56,4 @@ let showIcon = (icon:string) => {
                     . . . . .
                     . . . . .
                     `);
-}
-
-
-let sendCommand = (cmd:string)=>{
-    bluetooth.uartWriteString(cmd);
 }

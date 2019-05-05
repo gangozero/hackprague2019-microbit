@@ -1,9 +1,9 @@
 ; Interface tables: 0/0 (NaN%)
 ; Virtual methods: 0 / 0
-; generated code sizes (bytes): 2432 (incl. 1492 user, 738 helpers, 14 vtables, 188 lits); src size 0
-; assembly: 1848 lines; density: 42.63 bytes/stmt; (35 stmts)
-; total bytes: 225664 (93.0% of 237.0k flash with 17024 free)
-; peep hole pass: 38 instructions removed and 25 updated
+; generated code sizes (bytes): 2292 (incl. 1376 user, 738 helpers, 14 vtables, 164 lits); src size 0
+; assembly: 1719 lines; density: 44.39 bytes/stmt; (31 stmts)
+; total bytes: 225524 (92.9% of 237.0k flash with 17164 free)
+; peep hole pass: 36 instructions removed and 25 updated
 ; peep hole pass: 4 instructions removed and 0 updated
 ; peep hole pass: 0 instructions removed and 0 updated
 
@@ -11,9 +11,9 @@
 ; start
     .startaddr 0x36800
     .hex 708E3B92C615A841C49866C975EE5197 ; magic number
-    .hex C9C3EF050FA261F2 ; hex template hash
-    .hex 06AEEDC113DBAD4D ; program hash
-    .short 9   ; num. globals
+    .hex 51B5F1F049D54DD2 ; hex template hash
+    .hex 17A3C3DA635DF914 ; program hash
+    .short 8   ; num. globals
     .short 0 ; patched with number of 64 bit words resulting from assembly
     .word _pxt_config_data
     .short 0 ; patched with comm section size
@@ -44,7 +44,7 @@ _main___P1_nochk:
 _main___P1_locals:
     movs r0, #0
     ldr r7, [r6, #0]
-    str r0, [r7, #32]
+    str r0, [r7, #28]
     @stackempty locals
     movs r0, #1
     ldr r7, [r6, #0]
@@ -61,7 +61,7 @@ _main___P1_locals:
     ldr r0, _ldlit_2      
     push {r0} ; proc-arg
     bl addListener__P218
-_proccall9:
+_proccall7:
     add sp, #4*1 ; pop locals 1
     @stackempty locals
     ldr r0, _ldlit_3      
@@ -70,15 +70,17 @@ _proccall9:
     str r7, [r6, #4]
     bl basic::showString
     @stackempty locals
-    ldr r0, _ldlit_4      
-    push {r0} ; proc-arg
-    bl _conv_1
+    movs r0, #125
+    lsls r0, r0, #3
     mov r7, sp
     str r7, [r6, #4]
-    bl bluetooth::onBluetoothConnected
-    add sp, #4*1 ; pop locals 1
+    bl basic::pause
     @stackempty locals
-    ldr r0, _ldlit_5      
+    mov r7, sp
+    str r7, [r6, #4]
+    bl bluetooth::startButtonService
+    @stackempty locals
+    ldr r0, _ldlit_4      
     push {r0} ; proc-arg
     bl _conv_1
     mov r7, sp
@@ -86,19 +88,15 @@ _proccall9:
     bl basic::forever
     add sp, #4*1 ; pop locals 1
     @stackempty locals
-    ldr r0, _ldlit_6      
+    ldr r0, _ldlit_5      
     ldr r7, [r6, #0]
     str r0, [r7, #20]
     @stackempty locals
-    ldr r0, _ldlit_7      
+    ldr r0, _ldlit_6      
     ldr r7, [r6, #0]
     str r0, [r7, #16]
     @stackempty locals
-    ldr r0, _ldlit_8      
-    ldr r7, [r6, #0]
-    str r0, [r7, #28]
-    @stackempty locals
-    ldr r0, _ldlit_9      
+    ldr r0, _ldlit_7      
     ldr r7, [r6, #0]
     str r0, [r7, #24]
     @stackempty locals
@@ -152,7 +150,7 @@ inline__P383_end:
     @stackempty args
 ; endfun
     ;
-; Function inline main.ts:3
+; Function inline main.ts:7
     ;
     .section code
     .balign 4
@@ -170,15 +168,34 @@ inline__P391_nochk:
 .locals:
     @stackmark locals
 inline__P391_locals:
+    movs r0, #66
     mov r7, sp
     str r7, [r6, #4]
-    bl bluetooth::startUartService
+    bl numops::toBoolDecr
+    mov r2, r0
+    ldr r0, _ldlit_8      
+    movs r1, #7
+    mov r7, sp
+    str r7, [r6, #4]
+    bl bluetooth::advertiseUrl
+    @stackempty locals
+    ldr r0, _ldlit_9      
+    push {r0} ; proc-arg
+    bl _conv_4
+    movs r0, #1
+    mov r7, sp
+    str r7, [r6, #4]
+    bl input::onButtonPressed
+    add sp, #4*1 ; pop locals 1
     @stackempty locals
     ldr r0, _ldlit_10      
-    movs r1, #150
+    push {r0} ; proc-arg
+    bl _conv_4
+    movs r0, #2
     mov r7, sp
     str r7, [r6, #4]
-    bl basic::showString
+    bl input::onButtonPressed
+    add sp, #4*1 ; pop locals 1
     @stackempty locals
 .ret.391:
     @stackempty locals
@@ -188,7 +205,7 @@ inline__P391_end:
     @stackempty args
 ; endfun
     ;
-; Function inline main.ts:8
+; Function inline main.ts:10
     ;
     .section code
     .balign 4
@@ -206,22 +223,10 @@ inline__P392_nochk:
 .locals:
     @stackmark locals
 inline__P392_locals:
-    ldr r0, _ldlit_11      
+    ldr r7, [r6, #0]
+    ldr r0, [r7, #16]
     push {r0} ; proc-arg
-    bl _conv_4
-    movs r0, #1
-    mov r7, sp
-    str r7, [r6, #4]
-    bl input::onButtonPressed
-    add sp, #4*1 ; pop locals 1
-    @stackempty locals
-    ldr r0, _ldlit_12      
-    push {r0} ; proc-arg
-    bl _conv_4
-    movs r0, #2
-    mov r7, sp
-    str r7, [r6, #4]
-    bl input::onButtonPressed
+    bl _lambda_call0_5
     add sp, #4*1 ; pop locals 1
     @stackempty locals
 .ret.392:
@@ -232,270 +237,178 @@ inline__P392_end:
     @stackempty args
 ; endfun
     ;
-; Function inline main.ts:9
+; Function inline main.ts:14
     ;
     .section code
     .balign 4
-inline__P393_Lit:
+inline__P394_Lit:
     .word pxt::RefAction_vtable
     .short 0, 0 ; no captured vars
-    .word inline__P393_args@fn
-inline__P393_args:
+    .word inline__P394_args@fn
+inline__P394_args:
     .section code
-inline__P393:
-inline__P393_nochk:
+inline__P394:
+inline__P394_nochk:
     @stackmark func
     @stackmark args
     push {lr}
 .locals:
     @stackmark locals
-inline__P393_locals:
-    ldr r7, [r6, #0]
-    ldr r0, [r7, #16]
-    push {r0} ; proc-arg
-    bl _lambda_call0_5
-    add sp, #4*1 ; pop locals 1
-    @stackempty locals
-.ret.393:
-    @stackempty locals
-inline__P393_end:
-    pop {pc}
-    @stackempty func
-    @stackempty args
-; endfun
-    ;
-; Function inline main.ts:13
-    ;
-    .section code
-    .balign 4
-inline__P395_Lit:
-    .word pxt::RefAction_vtable
-    .short 0, 0 ; no captured vars
-    .word inline__P395_args@fn
-inline__P395_args:
-    .section code
-inline__P395:
-inline__P395_nochk:
-    @stackmark func
-    @stackmark args
-    push {lr}
-.locals:
-    @stackmark locals
-inline__P395_locals:
+inline__P394_locals:
     ldr r7, [r6, #0]
     ldr r0, [r7, #20]
     push {r0} ; proc-arg
     bl _lambda_call0_5
     add sp, #4*1 ; pop locals 1
     @stackempty locals
-.ret.395:
+.ret.394:
     @stackempty locals
-inline__P395_end:
+inline__P394_end:
     pop {pc}
     @stackempty func
     @stackempty args
 ; endfun
     ;
-; Function inline main.ts:19
+; Function inline main.ts:20
     ;
     .section code
     .balign 4
-inline__P397_Lit:
+inline__P396_Lit:
     .word pxt::RefAction_vtable
     .short 0, 0 ; no captured vars
-    .word inline__P397_args@fn
-inline__P397_args:
+    .word inline__P396_args@fn
+inline__P396_args:
     .section code
-inline__P397:
-inline__P397_nochk:
+inline__P396:
+inline__P396_nochk:
     @stackmark func
     @stackmark args
     push {lr}
 .locals:
     @stackmark locals
-inline__P397_locals:
+inline__P396_locals:
     ldr r7, [r6, #0]
     ldr r0, [r7, #24]
     push {r0} ; proc-arg
-    ldr r0, _ldlit_13      
+    ldr r0, _ldlit_11      
     push {r0} ; proc-arg
     ldr r0, [sp, #4*1] ; estack
     bl _lambda_call1_6
     add sp, #4*2 ; pop locals 2
     @stackempty locals
-    ldr r7, [r6, #0]
-    ldr r0, [r7, #28]
-    push {r0} ; proc-arg
-    ldr r0, _ldlit_14      
-    push {r0} ; proc-arg
-    ldr r0, [sp, #4*1] ; estack
-    bl _lambda_call1_6
-    add sp, #4*2 ; pop locals 2
+.ret.396:
     @stackempty locals
-.ret.397:
-    @stackempty locals
-inline__P397_end:
+inline__P396_end:
     pop {pc}
     @stackempty func
     @stackempty args
 ; endfun
     ;
-; Function inline main.ts:24
+; Function inline main.ts:25
     ;
     .section code
     .balign 4
-inline__P400_Lit:
+inline__P398_Lit:
     .word pxt::RefAction_vtable
     .short 0, 0 ; no captured vars
-    .word inline__P400_args@fn
-inline__P400_args:
+    .word inline__P398_args@fn
+inline__P398_args:
     .section code
-inline__P400:
-inline__P400_nochk:
+inline__P398:
+inline__P398_nochk:
     @stackmark func
     @stackmark args
     push {lr}
 .locals:
     @stackmark locals
-inline__P400_locals:
+inline__P398_locals:
     ldr r7, [r6, #0]
     ldr r0, [r7, #24]
     push {r0} ; proc-arg
-    ldr r0, _ldlit_15      
+    ldr r0, _ldlit_12      
     push {r0} ; proc-arg
     ldr r0, [sp, #4*1] ; estack
     bl _lambda_call1_6
     add sp, #4*2 ; pop locals 2
     @stackempty locals
-    ldr r7, [r6, #0]
-    ldr r0, [r7, #28]
-    push {r0} ; proc-arg
-    ldr r0, _ldlit_16      
-    push {r0} ; proc-arg
-    ldr r0, [sp, #4*1] ; estack
-    bl _lambda_call1_6
-    add sp, #4*2 ; pop locals 2
+.ret.398:
     @stackempty locals
-.ret.400:
-    @stackempty locals
-inline__P400_end:
+inline__P398_end:
     pop {pc}
     @stackempty func
     @stackempty args
 ; endfun
     ;
-; Function inline main.ts:29
+; Function inline main.ts:30
     ;
     .section code
     .balign 4
-inline__P401_Lit:
+inline__P399_Lit:
     .word pxt::RefAction_vtable
     .short 0, 0 ; no captured vars
-    .word inline__P401_args@fn
-inline__P401_args:
+    .word inline__P399_args@fn
+inline__P399_args:
     cmp r4, #1
-    bge inline__P401_nochk
+    bge inline__P399_nochk
     push {lr}
     bl _expand_args_1_2
-    bl inline__P401_nochk
+    bl inline__P399_nochk
     @dummystack 1
     add sp, #4*1
     pop {pc}
     .section code
-inline__P401:
-inline__P401_nochk:
+inline__P399:
+inline__P399_nochk:
     @stackmark func
     @stackmark args
     push {lr}
 .locals:
     @stackmark locals
-inline__P401_locals:
+inline__P399_locals:
     ldr r0, [sp, args@0]
-    ldr r1, _ldlit_14      
+    ldr r1, _ldlit_11      
     bl _cmp_eqq
-    beq .else_0_9      
-.jmpz16:
-    ldr r0, _ldlit_17      
+    beq .else_0_8      
+.jmpz12:
+    ldr r0, _ldlit_13      
     movs r1, #25
     lsls r1, r1, #4
     mov r7, sp
     str r7, [r6, #4]
     bl basic::showLeds
     @stackempty locals
-.else_0_9:
-.afterif_1_9:
+.else_0_8:
+.afterif_1_8:
     ldr r0, [sp, args@0]
-    ldr r1, _ldlit_16      
+    ldr r1, _ldlit_12      
     bl _cmp_eqq
-    beq .else_2_9      
-.jmpz17:
-    ldr r0, _ldlit_18      
+    beq .else_2_8      
+.jmpz13:
+    ldr r0, _ldlit_14      
     movs r1, #25
     lsls r1, r1, #4
     mov r7, sp
     str r7, [r6, #4]
     bl basic::showLeds
     @stackempty locals
-.else_2_9:
-.afterif_3_9:
+.else_2_8:
+.afterif_3_8:
     movs r0, #125
     lsls r0, r0, #3
     mov r7, sp
     str r7, [r6, #4]
     bl basic::pause
     @stackempty locals
-    ldr r0, _ldlit_19      
+    ldr r0, _ldlit_15      
     movs r1, #25
     lsls r1, r1, #4
     mov r7, sp
     str r7, [r6, #4]
     bl basic::showLeds
     @stackempty locals
-.ret.401:
+.ret.399:
     @stackempty locals
-inline__P401_end:
-    pop {pc}
-    @stackempty func
-    @stackempty args
-; endfun
-    ;
-; Function inline main.ts:61
-    ;
-    .section code
-    .balign 4
-inline__P403_Lit:
-    .word pxt::RefAction_vtable
-    .short 0, 0 ; no captured vars
-    .word inline__P403_args@fn
-inline__P403_args:
-    cmp r4, #1
-    bge inline__P403_nochk
-    push {lr}
-    bl _expand_args_1_2
-    bl inline__P403_nochk
-    @dummystack 1
-    add sp, #4*1
-    pop {pc}
-    .section code
-inline__P403:
-inline__P403_nochk:
-    @stackmark func
-    @stackmark args
-    push {lr}
-.locals:
-    @stackmark locals
-inline__P403_locals:
-    ldr r0, [sp, args@0]
-    push {r0} ; proc-arg
-    bl _conv_3
-    mov r7, sp
-    str r7, [r6, #4]
-    bl bluetooth::uartWriteString
-    add sp, #4*1 ; pop locals 1
-    @stackempty locals
-.ret.403:
-    @stackempty locals
-inline__P403_end:
+inline__P399_end:
     pop {pc}
     @stackempty func
     @stackempty args
@@ -528,13 +441,13 @@ addListener__P218_locals:
     str r7, [r6, #4]
     bl numops::toBoolDecr
     cmp r0, #0
-    beq .else_0_11      
-.jmpz18:
+    beq .else_0_9      
+.jmpz14:
     b .ret.218      
-.else_0_11:
-.afterif_1_11:
+.else_0_9:
+.afterif_1_9:
     ldr r7, [r6, #0]
-    ldr r0, [r7, #32]
+    ldr r0, [r7, #28]
     mov r7, sp
     str r7, [r6, #4]
     bl numops::toBoolDecr
@@ -548,18 +461,18 @@ addListener__P218_locals:
     str r7, [r6, #4]
     bl numops::toBoolDecr
     cmp r0, #0
-    beq .else_2_11      
-.jmpz19:
+    beq .else_2_9      
+.jmpz15:
     mov r7, sp
     str r7, [r6, #4]
     bl Array_::mk
     ldr r7, [r6, #0]
-    str r0, [r7, #32]
+    str r0, [r7, #28]
     @stackempty locals
-.else_2_11:
-.afterif_3_11:
+.else_2_9:
+.afterif_3_9:
     ldr r7, [r6, #0]
-    ldr r0, [r7, #32]
+    ldr r0, [r7, #28]
     push {r0} ; proc-arg
     ldr r0, [sp, args@0]
     push {r0} ; proc-arg
@@ -680,43 +593,6 @@ _pxt_buffer_get:
     lsls r0, r0, #1
     adds r0, #1
     pop {pc}
-.balign 4
-_ldlit_2:
- .word inline__P383_Lit
-_ldlit_3:
- .word _str0meta
-_ldlit_4:
- .word inline__P391_Lit
-_ldlit_5:
- .word inline__P392_Lit
-_ldlit_6:
- .word inline__P397_Lit
-_ldlit_7:
- .word inline__P400_Lit
-_ldlit_8:
- .word inline__P401_Lit
-_ldlit_9:
- .word inline__P403_Lit
-_ldlit_10:
- .word _str1meta
-_ldlit_11:
- .word inline__P393_Lit
-_ldlit_12:
- .word inline__P395_Lit
-_ldlit_13:
- .word _str2meta
-_ldlit_14:
- .word _str3meta
-_ldlit_15:
- .word _str4meta
-_ldlit_16:
- .word _str5meta
-_ldlit_17:
- .word _img6
-_ldlit_18:
- .word _img7
-_ldlit_19:
- .word _img8
 .fail:
     bl pxt::failedCast
 .oob:
@@ -756,6 +632,35 @@ _pxt_array_get:
     str r7, [r6, #4]
     bl Array_::getAt
     pop {pc}
+.balign 4
+_ldlit_2:
+ .word inline__P383_Lit
+_ldlit_3:
+ .word _str0meta
+_ldlit_4:
+ .word inline__P391_Lit
+_ldlit_5:
+ .word inline__P396_Lit
+_ldlit_6:
+ .word inline__P398_Lit
+_ldlit_7:
+ .word inline__P399_Lit
+_ldlit_8:
+ .word _str1meta
+_ldlit_9:
+ .word inline__P392_Lit
+_ldlit_10:
+ .word inline__P394_Lit
+_ldlit_11:
+ .word _str2meta
+_ldlit_12:
+ .word _str3meta
+_ldlit_13:
+ .word _img4
+_ldlit_14:
+ .word _img5
+_ldlit_15:
+ .word _img6
 .fail:
     bl pxt::failedCast
 .oob:
@@ -1437,68 +1342,56 @@ _helpers_end:
 .balign 4
 _pxt_iface_member_names:
     .word 1
-    .word _str20meta  ; 0 .
+    .word _str16meta  ; 0 .
     .word 0
 _vtables_end:
 .balign 4
 _pxt_config_data:
     .word 0
 .balign 4
-_img6:
+_img4:
  .short 0xffff
         .short 5, 5
         .byte 0,255,0,255,0,0,255,0,255,0,0,0,0,0,0,255,0,0,0,255,0,255,255,255,0,0
 .balign 4
-_img7:
+_img5:
  .short 0xffff
         .short 5, 5
         .byte 0,255,0,255,0,0,255,0,255,0,0,0,0,0,0,0,255,255,255,0,255,0,0,0,255,0
 .balign 4
-_img8:
+_img6:
  .short 0xffff
         .short 5, 5
         .byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 .balign 4
-_str20meta:
+_str16meta:
  .word pxt::string_inline_ascii_vt
         .short 0
-_str20:
+_str16:
  .string ""
 .balign 4
 _str0meta:
  .word pxt::string_inline_ascii_vt
-        .short 5
+        .short 1
 _str0:
- .string "READY"
+ .string "R"
 .balign 4
 _str1meta:
  .word pxt::string_inline_ascii_vt
-        .short 1
+        .short 6
 _str1:
- .string "C"
+ .string "huesos"
 .balign 4
 _str2meta:
  .word pxt::string_inline_ascii_vt
-        .short 5
+        .short 4
 _str2:
- .string "like;"
+ .string "like"
 .balign 4
 _str3meta:
  .word pxt::string_inline_ascii_vt
-        .short 4
-_str3:
- .string "like"
-.balign 4
-_str4meta:
- .word pxt::string_inline_ascii_vt
-        .short 7
-_str4:
- .string "unlike;"
-.balign 4
-_str5meta:
- .word pxt::string_inline_ascii_vt
         .short 6
-_str5:
+_str3:
  .string "unlike"
 .balign 4
 .section code
