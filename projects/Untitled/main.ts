@@ -1,6 +1,5 @@
 basic.showString("R");
 basic.pause(1000);
-//bluetooth.startUartService();
 bluetooth.startButtonService();
 
 
@@ -18,12 +17,10 @@ basic.forever(()=>{
 })
 
 let handleLike = ()=>{
-   // bluetooth.uartWriteNumber(10);
     showIcon('like');
 }
 
 let handleUnlike = ()=>{
-  //  bluetooth.uartWriteNumber(20);
     showIcon('unlike');  
 }
 
