@@ -5,7 +5,7 @@ bluetooth.startButtonService();
 
 
 basic.forever(()=>{
-    bluetooth.advertiseUrl('huesos',7,true);
+    bluetooth.advertiseUrl('abc',7,true);
 
     input.onButtonPressed(Button.A, () => {
         handleUnlike();      
